@@ -1,0 +1,40 @@
+<ng-snotify class="material"></ng-snotify>
+
+<div class="wrapper-button">
+
+  <div class="wrapper d-flex">
+    <nav id="sidebar">
+     
+      <ul class="list-unstyled components">
+          <li>
+              <a routerLink='/all-movies'>All Movies</a>
+            </li>
+        <li class="active">
+          <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+          <ul class="collapse list-unstyled" id="homeSubmenu">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Home 2</a></li>
+            <li><a href="#">Home 3</a></li>
+          </ul>
+        </li>
+        <li>
+          <a routerLink='/add-movie'>Add Movie</a>
+        </li>
+        <li>
+          <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+          <ul class="collapse list-unstyled" id="pageSubmenu">
+              <li><a href="#">Home 1</a></li>
+              <li><a href="#">Home 2</a></li>
+              <li><a href="#">Home 3</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Portifólio</a></li>
+        <li><a href="#">Contato</a></li>
+      </ul>
+    </nav>
+  
+  </div>
+  <div class='content'>
+    <router-outlet></router-outlet>
+  </div>
+</div>

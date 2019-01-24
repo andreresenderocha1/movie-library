@@ -1,0 +1,7 @@
+<div class="container d-flex p-2">
+  <app-movie-item
+   *ngFor='let movie of (movieState | async).movies'
+   [movie]='movie'
+   ></app-movie-item>     
+  
+</div>

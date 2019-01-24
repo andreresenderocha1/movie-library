@@ -1,0 +1,56 @@
+<form [formGroup]='addMovieForm' (ngSubmit)='onSubmit()'>
+  <div class="container p-5">
+    <div class="form-left p-2"> 
+
+      <div class="card w-100">
+        <div class="card-header">
+          New Movie Image
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="url">Url</label>
+            <input 
+              type="text" 
+              id="url"
+              formControlName='url' 
+              class="form-control">
+          </div>
+          <!-- src="../../../assets/imgs/dragImageHere.png"  -->
+          <img 
+            [src]='addMovieForm.value.url || "../../../assets/imgs/dragImageHere.png"'
+            class="img-fluid" 
+            alt="">
+        </div>             
+      </div>        
+      
+    </div>
+
+    <div class="form-right p-2">
+      <div class="card w-100">
+        <div class="card-header">
+          New Movie Data
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input 
+              type="text" 
+              class="form-control"
+              formControlName="name"
+              id="name">
+            <label for="description">Description</label>
+            <textarea 
+              class="form-control" 
+              id="description" 
+              formControlName='description'
+              cols="30" 
+              rows="4"></textarea>
+          </div>          
+        </div>
+        <div class="card-footer">
+          <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

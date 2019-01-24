@@ -1,0 +1,10 @@
+<a href="#" [routerLink]='["/movie-detail", movie.id]'>
+  <div class="card m-1 shadow-card-movie">
+    <img [src]="movie.pathImage" class='card-img-top'>
+    <div class="card-body">
+      <h5 class="card-title">{{movie.name}}</h5>
+      <p class="card-text">{{movie.description}}</p>
+      <a href="#" class="btn btn-primary">View</a>
+    </div>
+  </div>
+</a>
