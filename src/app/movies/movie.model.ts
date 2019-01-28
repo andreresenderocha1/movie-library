@@ -1,8 +1,7 @@
 export class Movie{
-    constructor(
-        public id: number,
+    constructor(        
         public name: string,
         public description: string,
-        public pathImage: string
+        public rating: string
     ){}
 }

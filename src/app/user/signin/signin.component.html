@@ -1,0 +1,33 @@
+<div class="container"> 
+  <form [formGroup]='form' (ngSubmit)="onSubmit()">
+    <hr>
+    
+    <input 
+      type="email" 
+      class="form-control m-2" 
+      id="email"
+      placeholder="E-mail"
+      formControlName="email">
+    <input 
+      type="password" 
+      class="form-control m-2" 
+      id="password"
+      placeholder="Password"
+      formControlName="password">
+
+    <button 
+      type="submit"
+      class="btn btn-success form-control m-2"
+      >Login</button>   
+      <div class="w-100 d-flex justify-content-center m-2 create-account-container">
+        <span class="create-account" (click)="onCreateAccount()">Create an Account</span>
+      </div>
+    <hr>  
+    <button 
+        class="btn btn-face form-control text-white m-2" 
+         
+        type="button" (click)="loginFacebook()">       
+        <span class="bold"> Login </span> with  <span class="bold">Facebook</span>
+      </button> 
+  </form>   
+</div>

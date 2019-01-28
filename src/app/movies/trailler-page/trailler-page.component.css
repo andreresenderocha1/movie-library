@@ -1,0 +1,21 @@
+
+
+.container-fluid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;    
+    position: absolute;
+    background: rgba(0,0,0,0.8);
+    padding: 20px;
+    z-index: 999;
+    margin-top: 130px;
+    position: fixed;
+    
+    
+}
+.player-container{
+   max-width: 500px;
+   max-height: 300px;   
+   
+}

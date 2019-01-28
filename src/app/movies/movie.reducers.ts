@@ -5,8 +5,8 @@ import { Movie } from './movie.model';
 
 const initialState = {
     movies: [
-        new Movie(1,'Avatar','Some comments here', 'https://upload.wikimedia.org/wikipedia/en/thumb/b/b0/Avatar-Teaser-Poster.jpg/220px-Avatar-Teaser-Poster.jpg'),
-        new Movie(2,"Tubarão", 'Some comments here','https://i.pinimg.com/originals/83/60/2d/83602d0529db152b406f35626048beff.jpg')
+        new Movie('Avatar','Some comments here', 'https://upload.wikimedia.org/wikipedia/en/thumb/b/b0/Avatar-Teaser-Poster.jpg/220px-Avatar-Teaser-Poster.jpg'),
+        new Movie("Tubarão", 'Some comments here','https://i.pinimg.com/originals/83/60/2d/83602d0529db152b406f35626048beff.jpg')
     ]
 }
 

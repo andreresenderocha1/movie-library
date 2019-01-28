@@ -4,17 +4,44 @@
     display: flex;    
 }
 
+.load-file-container{
+    border: 1px dashed gray;
+    padding: 20px;
+}
+
 .form-left{
     width: 55%;
-    max-height: 110px;
+    
     
 }
 
 .form-right{
     width: 45%;
-    max-height: 110px;
+    
     
 }
+
+.star-container{
+    outline: none;
+}
+
+.star {
+    font-size: 30px;
+    color: #8f8f8f;
+    outline: none;
+  }
+  .filled {
+    color: #fff34d;    
+  }
+
+  .rating-container{
+      display: flex;
+      flex-direction: column;
+      
+  }
+ 
+
+
 
 
 

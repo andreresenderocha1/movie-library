@@ -1,10 +1,48 @@
-<a href="#" [routerLink]='["/movie-detail", movie.id]'>
-  <div class="card m-1 shadow-card-movie">
-    <img [src]="movie.pathImage" class='card-img-top'>
-    <div class="card-body">
-      <h5 class="card-title">{{movie.name}}</h5>
-      <p class="card-text">{{movie.description}}</p>
-      <a href="#" class="btn btn-primary">View</a>
+
+  <div class="card d-flex shadow-card-movie">
+      <div class="card-header"> 
+    
+          <button 
+            type="button" 
+            class="btn btn-primary form-control"
+            data-toggle="modal"
+            data-target="#movieTraillerModal"
+            >Trailler</button>
+    
+    <div class="modal fade" id="movieTraillerModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+              <div class="container-fluid">
+                  <vg-player class="player-container">
+                      <video [vgMedia]="media" #media id="singleVideo" preload="auto" controls>
+                          <source src="http://static.videogular.com/assets/videos/videogular.mp4" type="video/mp4">
+                      </video>
+                  </vg-player>
+                </div>
+          </div>
+        </div>
+      </div>
     </div>
+       
+    </div>
+      <a href="#" [routerLink]='["/movie-detail", movie.id]'>
+    <img [src]="imageUrl" class='card-img-top'>
+   
+    <div class="card-body d-flex flex-column">
+       <h5 class="card-title">{{movie?.movie.name}}</h5> 
+      <p class="card-text">{{movie?.movie.description}}</p>
+    
+     
   </div>
-</a>
+</a>  
+<div class="card-body stars-container d-flex align-items-end">
+    <ngb-rating class="mb-3" max='5' [formControl]='rating'>
+        <ng-template  let-fill="fill" let-index="index">                
+          <span class="star" [class.filled]="fill === 100"><fa-icon [icon]="faStar"></fa-icon></span>
+        </ng-template>
+      </ngb-rating> 
+</div>
+
+  
+</div>

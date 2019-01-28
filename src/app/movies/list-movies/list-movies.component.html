@@ -1,7 +1,21 @@
-<div class="container d-flex p-2">
-  <app-movie-item
-   *ngFor='let movie of (movieState | async).movies'
-   [movie]='movie'
-   ></app-movie-item>     
-  
+<div class="container">
+  <div class="search-container w-100 d-flex justify-content-center">
+    <div class="w-50">
+      <input 
+        type="text" 
+        class="form-control" 
+        (keyup)="onClick($event)"
+        placeholder="Search a movie...">
+    </div>
+  </div> 
+
+
+
+  <div *ngIf="moviesToShow" class="list-container">
+    <app-movie-item
+    *ngFor='let movie of moviesToShow'
+    [movie]='movie'
+    class="d-flex justify-content-center"
+    ></app-movie-item>   
+  </div>
 </div>

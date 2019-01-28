@@ -12,6 +12,7 @@ export class AppComponent implements OnInit{
   constructor(private dataStorageService: DataStorageService){}
 
   ngOnInit(){
+    
     // this.dataStorageService.setMovies()
     //   .subscribe(
     //     (response: Response)=>{

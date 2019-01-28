@@ -1,0 +1,17 @@
+.container{
+    width: 360px;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.btn-face{
+    background-color:#3B5998;
+}
+
+.create-account{
+    color: blue;  
+    cursor: pointer;   
+    text-decoration: underline;   
+}

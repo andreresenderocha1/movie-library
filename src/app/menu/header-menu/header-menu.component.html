@@ -1,26 +1,59 @@
 
-<div class="row">  
-  <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12">
+
       <nav class="navbar navbar-light bg-info navbar-expand-lg p-0">          
           <ul class="navbar-nav header-menu">
             <div class="header-left-menu">
               <li class="nav-item">
-                 <a (click)='onclick()' class="nav-link text-white"><h5>Admin</h5></a>
+                 <a (click)='onclick()' routerLink="/signup" class="nav-link text-white"><h5>Admin</h5></a>
               </li>
             </div>
-            <div class="header-right-menu px-3">
+            <div class="header-right-menu">
               <li class="nav-item">                   
                   <a class="nav-link" id="sidebarCollapse">
                       <fa-icon [icon]="faAlignJustify" size='lg' rotate='90'></fa-icon>
                   </a>                  
               </li>   
-              <li class="nav-item">
-                <a class="nav-link">
-                  <fa-icon [icon]="faCoffee" size='lg'></fa-icon>
-                </a>
-              </li>  
+                            
+            
+              <li *ngIf="!flagLogin" class="nav-item user-logged-container">       
+               <a
+                class="nav-link my" 
+                [ngbPopover]="popContent" 
+                 [popoverTitle]="popTitle"
+                 placement="bottom"
+                 [autoClose]="'outside'"
+                 container="body"
+                >
+                 <fa-icon [icon]="faUser" size='lg'></fa-icon>                 
+                    <ng-template #popTitle>Login</ng-template>
+                    <ng-template #popContent>                  
+                        <app-signin></app-signin>
+                    </ng-template>                           
+                
+               </a>
+               </li>
+               <li *ngIf="flagLogin" class="nav-item user-logged-container">       
+                 <span> {{userEmail}}</span>
+                  <a
+                   class="nav-link my" 
+                   [ngbPopover]="popContent" 
+                    [popoverTitle]="popTitle"
+                    placement="bottom"
+                    [autoClose]="'outside'"
+                    container="body"
+                   >
+                    <img src="../../../assets/imgs/profile-pic.jpg" alt="">
+                    <ng-template #popTitle>Profile</ng-template>
+                    <ng-template #popContent>                  
+                       <app-profile-popup></app-profile-popup>
+                    </ng-template>
+   
+                              
+                  </a> 
+                  </li>
+                  
+                  
             </div>      
           </ul>        
     </nav>
-  </div>
-</div>
+  

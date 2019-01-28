@@ -1,31 +1,42 @@
 <form [formGroup]='addMovieForm' (ngSubmit)='onSubmit()'>
-  <div class="container p-5">
-    <div class="form-left p-2"> 
+  <div class="row p-5 justify-content-center">
+    <div class="col-md-5 col-sm-12 col-12 form-left p-2"> 
 
       <div class="card w-100">
         <div class="card-header">
           New Movie Image
         </div>
-        <div class="card-body">
-          <div class="form-group">
-            <label for="url">Url</label>
-            <input 
-              type="text" 
-              id="url"
-              formControlName='url' 
-              class="form-control">
-          </div>
-          <!-- src="../../../assets/imgs/dragImageHere.png"  -->
-          <img 
-            [src]='addMovieForm.value.url || "../../../assets/imgs/dragImageHere.png"'
-            class="img-fluid" 
-            alt="">
-        </div>             
-      </div>        
-      
+        <div class="card-body">       
+          
+            <div *ngIf="flagUploadedImage">
+              <img class="img-fluid" [src]="imagePath" alt="">
+              <input type="file" id="changeImage" (change)="upload($event)" style="display:none">
+              <button 
+                type="button" 
+                class="btn btn-primary my-3 d-flex flex-column justify-content-start"
+                onclick="document.getElementById('changeImage').click()"
+                >Change image</button>
+            </div>
+            <div *ngIf="!flagUploadedImage" class="load-file-container d-flex flex-column justify-content-center align-items-center" >
+              
+                  
+                <fa-icon 
+                 class="text-primary fa-3x m-3"
+                 [icon]="faCloudUploadAlt"></fa-icon>
+              
+              <h4>Select a file to upload...</h4>
+              <!-- <button type="file" class="btn btn-secondary m-3">Select a file</button> -->
+              <div>
+                  <input type="file" id="selectedFile" (change)="upload($event)" style="display: none;" />
+                  <button type="button" class="btn btn-secondary"  onclick="document.getElementById('selectedFile').click()">Select a file</button>
+              </div>
+             
+            </div>
+        </div>        
+      </div>
     </div>
 
-    <div class="form-right p-2">
+    <div class="col-md-5 col-sm-12 col-12 form-right p-2">
       <div class="card w-100">
         <div class="card-header">
           New Movie Data
@@ -45,7 +56,15 @@
               formControlName='description'
               cols="30" 
               rows="4"></textarea>
-          </div>          
+          </div> 
+          <div class="rating-container">
+            <label for="rating">Rating</label>     
+            <ngb-rating class="star-container" formControlName='ratingStars' [(rate)]="currentRate" max='5'>
+              <ng-template  let-fill="fill" let-index="index">                
+                <span class="star" [class.filled]="fill === 100"><fa-icon [icon]="faStar"></fa-icon></span>
+              </ng-template>
+            </ngb-rating>   
+          </div>
         </div>
         <div class="card-footer">
           <button type="submit" class="btn btn-primary">Salvar</button>

@@ -5,6 +5,9 @@ import {FormGroup, FormControl} from '@angular/forms';
 import { Movie } from '../movie.model';
 import { Store } from '@ngrx/store';
 import { SnotifyService } from 'ng-snotify';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { faStar, faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 
 @Component({
@@ -14,15 +17,22 @@ import { SnotifyService } from 'ng-snotify';
 })
 export class AddMovieComponent implements OnInit {
   addMovieForm: FormGroup;
+  faStar = faStar;
+  faCloudUploadAlt = faCloudUploadAlt;
+  file;
+  imagePath: string | ArrayBuffer;
+  flagUploadedImage=false;
 
-  constructor(private store: Store<{movie: {movies: Movie[]}}>,
-              private snotifyService:SnotifyService) { }
+  constructor(private store: Store<{movieState: {movies: Movie[]}}>,
+              private snotifyService:SnotifyService,
+              private firebaseStorage: AngularFireStorage,
+              private firebaseStore: AngularFirestore) { }
 
   ngOnInit() {
-    this.addMovieForm = new FormGroup({
-      'url': new FormControl(),
+    this.addMovieForm = new FormGroup({      
       'description': new FormControl(null),
-      'name': new FormControl(null)
+      'name': new FormControl(null),
+      'ratingStars': new FormControl(null)
     });
   }
 
@@ -30,14 +40,57 @@ export class AddMovieComponent implements OnInit {
   onSubmit(){
     const name = this.addMovieForm.value.name;
     const description = this.addMovieForm.value.description;
-    const url = this.addMovieForm.value.url;
-    const movie: Movie = new Movie(1,name,description,url);
-    this.store.dispatch(new MovieActions.AddMovie(movie));
-    this.snotifyService.success(
-      "You added a new movie to your gallery!",
-      "Add Movie",
-      {timeout: 3000}
-    )
+    const rating = this.addMovieForm.value.ratingStars;    
+    const newMovie: Movie = new Movie(name,description,rating);
+    // this.store.dispatch(new MovieActions.AddMovie(movie));
+    this.firebaseStore.collection('movies').add({
+      name: name,
+      description: description,
+      rating: rating
+    })
+      .then(
+        (docRef)=>{
+          const filePath = 'posters/'+docRef.id;
+          const ref = this.firebaseStorage.ref(filePath);
+          const task = ref.put(this.file);
+          this.snotifyService.success(
+            "You added a new movie to your gallery!",
+            "Add Movie",
+            {timeout: 3000}
+          )
+          this.flagUploadedImage=false;
+        }
+      )
+    
+  }
+
+  upload(event){
+    this.file = event.target.files[0];
+    if (event.target.files && event.target.files[0]) {
+      this.flagUploadedImage = true;
+      const file = event.target.files[0];
+
+      const reader = new FileReader();
+      reader.onload = e => this.imagePath = reader.result;
+
+      reader.readAsDataURL(file);
+  }
+    // this.firebase.storage(
+    //   match /b/{bucket}/o {
+    //     match /{allPaths=**} {
+    //       allow read, write: if request.auth != null;
+    //     }
+    //   }
+    // )
+    // }
+    
+    // const file = event.target.files[0];
+    // const filePath = 'movies-project-b3f30.appspot.com/posters/'+;
+    // const ref = this.firebase.ref(filePath);
+    // const task = ref.put(file);
+    
+    
+    
   }
 
 }

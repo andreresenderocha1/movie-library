@@ -29,6 +29,22 @@ a, a:hover, a:focus{
     cursor: pointer;
 }
 
+img{
+    max-width: 32px;
+    max-height: 32px;
+    border-radius: 50%;
+}
+
+span{
+    color: rgb(240, 239, 239);
+}
+
+.user-logged-container{
+    display: flex;
+    align-items: center;
+}
+
+
 @media (max-width: 991px) {
     .header-left-menu {
         min-width: 100%;
