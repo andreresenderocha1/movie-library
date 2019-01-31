@@ -35,6 +35,9 @@ import { ProfilePopupComponent } from './user/profile-popup/profile-popup.compon
 import { ChangeInfosService } from './shared/change-infos.service';
 import { EditProfileComponent } from './user/edit-profile/edit-profile.component';
 import { CreateAccountComponent } from './user/create-account/create-account.component';
+import { MyLibraryComponent } from './user/library/my-library/my-library.component';
+import { MyLibraryItemComponent } from './user/library/my-library-item/my-library-item.component';
+import {DragulaModule} from 'ng2-dragula'
 
 @NgModule({
   declarations: [
@@ -51,7 +54,9 @@ import { CreateAccountComponent } from './user/create-account/create-account.com
     SigninComponent,
     ProfilePopupComponent,
     EditProfileComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
+    MyLibraryComponent,
+    MyLibraryItemComponent
   ],
   imports: [
         VgCoreModule,
@@ -72,7 +77,8 @@ import { CreateAccountComponent } from './user/create-account/create-account.com
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
-    StoreModule.forRoot({movieState: movieReducer})
+    StoreModule.forRoot({movieState: movieReducer}),
+    DragulaModule.forRoot()
   ],
   providers: [
     DataStorageService,

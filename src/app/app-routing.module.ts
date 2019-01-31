@@ -7,6 +7,7 @@ import { MovieDetailComponent } from './movies/movie-detail/movie-detail.compone
 import { SigninComponent } from './user/signin/signin.component';
 import { SignupComponent } from './user/signup/signup.component';
 import { EditProfileComponent } from './user/edit-profile/edit-profile.component';
+import { MyLibraryComponent } from './user/library/my-library/my-library.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/all-movies', pathMatch: 'full'},
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'signup',component: SignupComponent}, 
   {path: 'user/profile',component: ProfileComponent},
   {path: 'add-movie', component: AddMovieComponent},
-  {path: 'edit-profile',component: EditProfileComponent}
+  {path: 'edit-profile',component: EditProfileComponent},
+  {path: 'my-library', component: MyLibraryComponent}
 ];
 
 @NgModule({  

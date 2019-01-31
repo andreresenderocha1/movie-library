@@ -4,7 +4,7 @@
           <ul class="navbar-nav header-menu">
             <div class="header-left-menu">
               <li class="nav-item">
-                 <a (click)='onclick()' routerLink="/signup" class="nav-link text-white"><h5>Admin</h5></a>
+                 <a (click)='onclick()' id="admin" routerLink="/signup" class="nav-link text-white"><h5>Admin</h5></a>
               </li>
             </div>
             <div class="header-right-menu">
@@ -12,27 +12,68 @@
                   <a class="nav-link" id="sidebarCollapse">
                       <fa-icon [icon]="faAlignJustify" size='lg' rotate='90'></fa-icon>
                   </a>                  
-              </li>   
-                            
-            
-              <li *ngIf="!flagLogin" class="nav-item user-logged-container">       
-               <a
+              </li> 
+                                         
+              
+              <li *ngIf="flagShowIconLogin" class="nav-item user-logged-container"> 
+                <a class="nav-link" (click)="flagShowPopupLogin=!flagShowPopupLogin">
+                   <fa-icon [icon]="faUser" size='lg'></fa-icon>      
+                </a>
+                <div class="my-popup-container" *ngIf="flagShowPopupLogin">
+                  <div class="my-popup-title">
+                    <span> Login </span>
+                  </div>
+                  <div class="my-popup-body">
+                    <app-signin></app-signin>
+                  </div>
+                </div> 
+                
+                <li *ngIf="flagShowIconSignup" class="nav-item user-logged-container"> 
+                  <a class="nav-link" (click)="flagShowPopupSignup=!flagShowPopupSignup">
+                     <fa-icon [icon]="faUser" size='lg'></fa-icon>      
+                  </a>
+                  <div class="my-popup-container" *ngIf="flagShowPopupSignup">                    
+                    <div class="my-popup-body">
+                      <app-signup></app-signup>
+                    </div>
+                  </div> 
+
+
+
+                <li *ngIf="flagShowIconProfile" class="nav-item user-logged-container">                   
+                    <a class="nav-link" (click)="flagShowPopupProfile=!flagShowPopupProfile">
+                      <span class="mr-3">{{userEmail}}</span>
+                      <img src="../../../assets/imgs/profile-pic.jpg" alt="">      
+                    </a>
+                    <div class="my-popup-container my-popup" *ngIf="flagShowPopupProfile">
+                      <div class="my-popup-title">
+                        <span class="my-popup-title-text"> Profile </span>
+                      </div>
+                      <div class="my-popup-body">
+                          <app-profile-popup></app-profile-popup>
+                      </div>
+                    </div>  
+              
+               <!-- <span
                 class="nav-link my" 
                 [ngbPopover]="popContent" 
                  [popoverTitle]="popTitle"
                  placement="bottom"
-                 [autoClose]="'outside'"
+                 [autoClose]="false"
                  container="body"
+                 #popoverLogin
                 >
                  <fa-icon [icon]="faUser" size='lg'></fa-icon>                 
                     <ng-template #popTitle>Login</ng-template>
                     <ng-template #popContent>                  
                         <app-signin></app-signin>
                     </ng-template>                           
-                
-               </a>
+                sdfdfs
+              </span>  -->
                </li>
-               <li *ngIf="flagLogin" class="nav-item user-logged-container">       
+               
+              
+               <!-- <li *ngIf="flagLogin" class="nav-item user-logged-container">       
                  <span> {{userEmail}}</span>
                   <a
                    class="nav-link my" 
@@ -50,7 +91,7 @@
    
                               
                   </a> 
-                  </li>
+                  </li> -->
                   
                   
             </div>      

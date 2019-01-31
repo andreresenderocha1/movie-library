@@ -6,7 +6,7 @@ import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { Store } from '@ngrx/store';
 import { Movie } from 'src/app/movies/movie.model';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { NgbPopoverConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbPopoverConfig, NgbPopover } from '@ng-bootstrap/ng-bootstrap';
 import { ChangeInfosService } from 'src/app/shared/change-infos.service';
 
 @Component({
@@ -20,9 +20,14 @@ export class HeaderMenuComponent implements OnInit {
   faCoffee = faCoffee;
   faUser = faUser;
   flagLogin = false;
-  flagCreateAccount = false;
   userEmail;
-  @ViewChild('popover3') pop: ElementRef;
+  flagShowPopupLogin = false;
+  flagShowPopupSignup = false;
+  flagShowPopupProfile = false;
+  flagShowIconLogin = false;
+  flagShowIconSignup = false;
+  flagShowIconProfile = false;
+  @ViewChild('popupProfile') pop: ElementRef;
 
   constructor(private dataStorageService: DataStorageService,
               private angularFireAuth: AngularFireAuth,
@@ -35,22 +40,39 @@ export class HeaderMenuComponent implements OnInit {
       .subscribe(
         (email: string)=>{
           this.userEmail = email;
-          this.flagLogin = true;
+          this.flagShowPopupLogin = true;
+          this.flagShowIconProfile = true;
         }
       )
+
     this.changeInfosService.createAccountEmitter
       .subscribe(
         ()=>{
-          this.flagCreateAccount = true;
+          // this.flagSignup = true;
+          this.flagShowIconLogin = false;
+          this.flagShowIconSignup = true;
+          this.flagShowPopupSignup = true;
         }
       )
+
+      this.changeInfosService.backToLoginEmmiter
+        .subscribe(
+          ()=>{
+            this.flagShowIconSignup = false;
+            this.flagShowIconLogin = true;
+            this.flagShowPopupLogin = true;
+          }
+        )
+    
 
    this.angularFireAuth.user
      .subscribe(
        user=> {
          if(user){
           this.userEmail = user.email
-          this.flagLogin = true;
+          this.flagShowIconProfile = true;
+         }else{
+           this.flagShowIconLogin = true;
          }
          
         }
@@ -58,16 +80,21 @@ export class HeaderMenuComponent implements OnInit {
       
     this.angularFireAuth.auth.onAuthStateChanged(
       user=>{
-        if(user){
-          this.flagLogin = true;
+        if(user){          
+          this.flagShowIconProfile = true;
+          this.flagShowIconLogin = false;
+          this.flagShowIconSignup = false;
         }else{
-          this.flagLogin = false;
-        }
+          this.flagShowPopupProfile = false;
+          this.flagShowIconProfile = false;
+          this.flagShowIconLogin = true;
+        } 
       }
     )
   }
 
   onclick(){
-    this.angularFireAuth.auth.signOut()     
+    this.pop.nativeElement.popover('hide')
+    
   }
 }

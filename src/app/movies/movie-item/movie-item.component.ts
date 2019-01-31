@@ -29,21 +29,21 @@ export class MovieItemComponent implements OnInit {
        
         const ref = this.firebaseStorage.ref('posters/'+this.movie.id);
         
-        ref.getMetadata()
-          .subscribe(
-            data=>{
-              const type = data.contentType;
-              const indexSlash = type.indexOf('/');
-              this.fileExtension = "."+type.slice(indexSlash+1,type.lenght)
-            }
-          )
-          
-         ref.getDownloadURL()           
-           .subscribe(            
-              data=> {
-                this.imageUrl = data + this.fileExtension;                
+          ref.getMetadata()
+            .subscribe(
+              data=>{
+                const type = data.contentType;
+                const indexSlash = type.indexOf('/');
+                this.fileExtension = "."+type.slice(indexSlash+1,type.lenght)
               }
-           )
+            )
+            
+           ref.getDownloadURL()           
+             .subscribe(            
+                data=> {
+                  this.imageUrl = data + this.fileExtension;                
+                }
+             )
 
         
       

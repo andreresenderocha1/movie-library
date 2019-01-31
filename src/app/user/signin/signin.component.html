@@ -20,7 +20,11 @@
       class="btn btn-success form-control m-2"
       >Login</button>   
       <div class="w-100 d-flex justify-content-center m-2 create-account-container">
-        <span class="create-account" (click)="onCreateAccount()">Create an Account</span>
+        <span 
+          class="create-account"           
+          id="createAccountLink"
+          (click)="onCreateAccount()"
+          >Create an Account</span>
       </div>
     <hr>  
     <button 

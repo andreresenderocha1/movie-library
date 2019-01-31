@@ -9,6 +9,9 @@
           <li>
               <a routerLink='/all-movies'>All Movies</a>
             </li>
+            <li *ngIf="flagLoggedin">
+              <a routerLink="/my-library">My Library</a>
+            </li>
 
         <li>
           <a routerLink='/add-movie'>Add Movie</a>

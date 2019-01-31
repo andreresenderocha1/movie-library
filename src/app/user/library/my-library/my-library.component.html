@@ -1,0 +1,30 @@
+
+<div class="container-fluid container-wrap">
+    
+<div class="container-fluid container-library" dragula="MOVIES" #ca>
+        <app-my-library-item 
+        *ngFor="let itemLibrary of libraryItems"  
+        [id]="itemLibrary"     
+        [itemLibrary]="itemLibrary"></app-my-library-item>  
+</div>
+
+    <div class="trash-can d-flex flex-column" dragula="MOVIES" id="trash"  > 
+       
+          <button (click)="click()"  #btnCancel>Cancel</button>
+          <div class="progress">
+              <div 
+                class="progress-bar bg-danger"
+                role="progressbar"                                 
+                aria-valuenow="100" 
+                aria-valuemin="0" 
+                aria-valuemax="1000"
+                [ngClass]="{'animate-bar':flag}"></div>
+                
+            </div>
+            Drag here
+    </div>    
+  
+
+  
+</div>
+

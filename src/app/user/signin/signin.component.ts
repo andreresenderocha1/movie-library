@@ -5,6 +5,7 @@ import { NgbPopoverConfig } from '@ng-bootstrap/ng-bootstrap';
 import * as firebase from 'firebase';
 import { Subject } from 'rxjs';
 import { ChangeInfosService } from 'src/app/shared/change-infos.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -19,7 +20,8 @@ export class SigninComponent implements OnInit {
 
   constructor(private angularFireAuth: AngularFireAuth,
               private changeInfosService: ChangeInfosService,
-              private popoverConfig: NgbPopoverConfig) { }
+              private popoverConfig: NgbPopoverConfig,
+              private router: Router) { }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -47,7 +49,8 @@ export class SigninComponent implements OnInit {
   }
 
   logout(){
-    this.angularFireAuth.auth.signOut()
+    this.angularFireAuth.auth.signOut();
+    this.router.navigate(['/'])
 
   }
   onSubmit(){
@@ -58,6 +61,7 @@ export class SigninComponent implements OnInit {
         result => {
           let email = result.user.email;
           this.changeInfosService.userEmailEmitter.next(email);
+          this.router.navigate(['/'])
         }
       )
       .catch(
@@ -73,7 +77,7 @@ export class SigninComponent implements OnInit {
            let token = result.credential.providerId;
            let user = result.user;    
            this.changeInfosService.userEmailEmitter.next(user.email);
-          
+           this.router.navigate(['/'])
         }
       )
   }

@@ -1,0 +1,39 @@
+.container-wrap{
+    display: flex;
+    padding: 0;    
+
+}
+
+.container-library{
+   width: 85%;
+   align-self: flex-start;
+   min-height: 100vh;
+   margin: 0;
+   padding: 0;
+}
+
+.container-options{
+    position: fixed;
+    right: 0;
+    top: 60%;
+    width: 10%;
+    height: 200px;
+    background: yellow;
+}
+
+.trash-can{
+    width: 200px;
+    height: 300px;
+    background: white;
+    border: 3px solid gray;
+}
+
+.animate-bar{
+    animation: start-progress 5s linear;
+}
+
+@keyframes start-progress{
+    from{width: 0%}
+    to{width: 100%}
+}
+

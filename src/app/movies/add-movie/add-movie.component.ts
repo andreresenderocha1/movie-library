@@ -54,11 +54,20 @@ export class AddMovieComponent implements OnInit {
           const ref = this.firebaseStorage.ref(filePath);
           const task = ref.put(this.file);
           this.snotifyService.success(
-            "You added a new movie to your gallery!",
+            "You added a new movie!",
             "Add Movie",
             {timeout: 3000}
           )
           this.flagUploadedImage=false;
+        }
+      )
+      .catch(
+        (error)=>{
+          this.snotifyService.error(
+            "Sorry, you must be logged in!",
+            "Access Denied",
+            {timeout: 3000}
+          )
         }
       )
     
@@ -74,22 +83,7 @@ export class AddMovieComponent implements OnInit {
       reader.onload = e => this.imagePath = reader.result;
 
       reader.readAsDataURL(file);
-  }
-    // this.firebase.storage(
-    //   match /b/{bucket}/o {
-    //     match /{allPaths=**} {
-    //       allow read, write: if request.auth != null;
-    //     }
-    //   }
-    // )
-    // }
-    
-    // const file = event.target.files[0];
-    // const filePath = 'movies-project-b3f30.appspot.com/posters/'+;
-    // const ref = this.firebase.ref(filePath);
-    // const task = ref.put(file);
-    
-    
+  }   
     
   }
 

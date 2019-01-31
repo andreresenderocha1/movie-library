@@ -18,6 +18,7 @@ export class ProfilePopupComponent implements OnInit {
 
   logout(){
     this.angularFireAuth.auth.signOut()
+    this.router.navigate(['/'])
   }
 
   onEditProfile(){
