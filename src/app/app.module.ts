@@ -14,7 +14,7 @@ import {VgBufferingModule} from 'videogular2/buffering';
 
 /estou no branch
 
-/novo teste
+/novo testeeee
 
 import { AppComponent } from './app.component';
 import { HeaderMenuComponent } from './menu/header-menu/header-menu.component';
