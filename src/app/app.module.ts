@@ -10,7 +10,7 @@ import {VgOverlayPlayModule} from 'videogular2/overlay-play';
 import {VgBufferingModule} from 'videogular2/buffering';
 // import {SingleMediaPlayer} from './single-media-player';
 
-// teste  
+// teste
 
 import { AppComponent } from './app.component';
 import { HeaderMenuComponent } from './menu/header-menu/header-menu.component';

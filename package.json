@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/andreresenderocha1/movie-library/issues"
   },
-  "homepage": "https://github.com/andreresenderocha1/movie-library#readme"
+  "homepage": "https://github.com/andreresenderocha1/movie-library#readme",
+  "dependencies": {
+    "angular": "^1.7.7"
+  }
 }
