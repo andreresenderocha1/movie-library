@@ -12,6 +12,8 @@ import {VgBufferingModule} from 'videogular2/buffering';
 
 // teste
 
+/estou no branch
+
 import { AppComponent } from './app.component';
 import { HeaderMenuComponent } from './menu/header-menu/header-menu.component';
 import { AppRoutingModule } from './app-routing.module';
